@@ -24,8 +24,8 @@ Function Measure-mmsFunctionPrefix {
             return $ReturnValue
         }
         #Use the AST filter to find the functions in the scriptblock
-        [System.Management.Automation.Language.Ast[]]$FunctionBlockAsts = $ScriptBlockAst.FindAll($FunctionPredicate,$true)
-        
+        [System.Management.Automation.Language.Ast[]]$FunctionBlockAsts 
+        $FunctionBlockAsts = $ScriptBlockAst.FindAll($FunctionPredicate,$true)        
         foreach($ast in $FunctionBlockAsts) {
             if(-not ($Ast.Name -cmatch '^[A-Z][A-Za-z+]{1,}-mms[A-Z][a-z]{2,}')) {
                 $Result = [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord] @{
@@ -40,5 +40,28 @@ Function Measure-mmsFunctionPrefix {
     }
     End {
         $Results
+    }
+}
+
+Function Measure-mmsPipeUsage {
+    [CmdletBinding()]
+    [OutputType([Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord[]])]
+    param (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.Management.Automation.Language.Token[]]
+        $Token
+    )
+    Begin {
+        $results = @()
+    }
+    Process {
+        foreach($t in $Token) {
+            if($t.Kind -eq [System.Management.Automation.Language.TokenKind]::Pipe) {
+                $Results += [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord] @{
+
+                }
+            }
+        }
     }
 }
