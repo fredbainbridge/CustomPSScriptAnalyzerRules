@@ -4,3 +4,4 @@ Get-ScriptAnalyzerRule | ft Name, CommonName, Description
 
 Invoke-ScriptAnalyzer -Path .\Tests -CustomRulePath .\Rules\ -RecurseCustomRulePath -Recurse
 
+Invoke-ScriptAnalyzer -Path .\Tests -CustomRulePath .\Rules\ -RecurseCustomRulePath -Recurse -Verbose
