@@ -4,7 +4,7 @@
 #Get rules available to you by default
 Get-ScriptAnalyzerRule | ft Name, CommonName, Description
 
-Invoke-ScriptAnalyzer -Path .\Tests -CustomRulePath .\Rules\ -RecurseCustomRulePath -Recurse
+Invoke-ScriptAnalyzer -Path .\ScriptAnalyzerRules\Tests -CustomRulePath .\ScriptAnalyzerRules\Rules\ -RecurseCustomRulePath -Recurse
 
-Invoke-ScriptAnalyzer -Path .\Tests -CustomRulePath .\Rules\ -RecurseCustomRulePath -Recurse -Verbose
+Invoke-ScriptAnalyzer -Path .\ScriptAnalyzerRules\Tests -CustomRulePath .\ScriptAnalyzerRules\Rules\ -RecurseCustomRulePath -Recurse -Verbose
 

@@ -58,10 +58,17 @@ Function Measure-mmsPipeUsage {
     Process {
         foreach($t in $Token) {
             if($t.Kind -eq [System.Management.Automation.Language.TokenKind]::Pipe) {
-                $Results += [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord] @{
-
+                $result = [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord] @{
+                    "Message"  = $Messages.MeasuremmsPipeUsage;
+                    "Extent"   = $t.Extent;
+                    "RuleName" = $PSCmdlet.MyInvocation.MyCommand.Name.Replace("Measure-","");
+                    "Severity" = "Error"  
                 }
+                $results += $result
             }
         }
+    }
+    End {
+        $results
     }
 }
