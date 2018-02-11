@@ -20,15 +20,20 @@ function Get-AstType {
 	    [string]$ScriptPath
 	)
 	process {
-	    try {
-			$ast = [System.Management.Automation.Language.Parser]::ParseFile( $ScriptPath, [ref]$null, [ref]$null )
-			$ast.FindAll( { $args[0] -ne $null }, $true )  |
-				ForEach-Object {
-					$_.GetType()
-				} | Select-Object -Unique
-	    }
-	    catch {
-	        $PSCmdlet.ThrowTerminatingError( $_ )
-	    }
+		if(Test-Path $ScriptPath) {
+			try {
+				$ast = [System.Management.Automation.Language.Parser]::ParseFile( $ScriptPath, [ref]$null, [ref]$null )
+				$ast.FindAll( { $args[0] -ne $null }, $true )  |
+					ForEach-Object {
+						$_.GetType()
+					} | Select-Object
+			}
+			catch {
+				$PSCmdlet.ThrowTerminatingError( $_ )
+			}
+		}
+		else {
+			Write-Verbose "File not found."
+		}
 	}
 }

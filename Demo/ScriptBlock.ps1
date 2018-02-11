@@ -1,3 +1,3 @@
 {
-    Write-Verbose "I am a script block"
+    Write-Verbose "I am a ScriptBlock!"
 }
