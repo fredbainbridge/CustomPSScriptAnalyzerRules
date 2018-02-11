@@ -7,7 +7,7 @@ $Elements = $ast.FindAll({$true},$true)
 #$Elements[3].Extent #Position info
 
 #this needs to be an absolutel path. Relative paths will not work. 
-. .\Get-AstType.ps1 
+. .\demo\Get-AstType.ps1 
 Get-AstType -ScriptPath "C:\source\repos\CustomPSScriptAnalyzerRules\Demo\ScriptBlock.ps1"
 
 <#  Copy and paste this into the ScriptBlock.ps1 for demo purposes.
