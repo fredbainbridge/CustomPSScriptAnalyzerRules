@@ -42,7 +42,6 @@ Function Measure-mmsFunctionPrefix {
         $Results
     }
 }
-
 Function Measure-mmsPipeUsage {
     [CmdletBinding()]
     [OutputType([Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord[]])]
@@ -62,7 +61,7 @@ Function Measure-mmsPipeUsage {
                     "Message"  = $Messages.MeasurePipeUsage;
                     "Extent"   = $t.Extent;
                     "RuleName" = $PSCmdlet.MyInvocation.MyCommand.Name.Replace("Measure-","");
-                    "Severity" = "Error"  
+                    "Severity" = "Warning"  
                 }
                 $results += $result
             }
