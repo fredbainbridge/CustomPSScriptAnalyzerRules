@@ -32,7 +32,7 @@ Function Measure-mmsFunctionPrefix {
                     "Message"  = $Messages.MeasureFunctionPrefix;
                     "Extent"   = $Ast.Extent;
                     "RuleName" = $PSCmdlet.MyInvocation.MyCommand.Name.Replace("Measure-","");
-                    "Severity" = "Error"  
+                    "Severity" = "Error"
                 }
                 $Results += $Result
             }

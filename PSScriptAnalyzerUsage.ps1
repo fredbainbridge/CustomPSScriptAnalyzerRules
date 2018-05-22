@@ -12,12 +12,9 @@ Get-Module -Name PSScriptAnalyzer
 #What comes out of the box?
 Get-Command -Module PSScriptAnalyzer
 
-#want more? Look at the community rules.  Warning, they can annoy you. These are excellent references for creating your own rules.
-#https://github.com/PowerShell/PSScriptAnalyzer/tree/development/Tests/Engine/CommunityAnalyzerRules
-
 
 #Get rules available to you by default (what comes out of the box)
-Get-ScriptAnalyzerRule | ft Name, CommonName, Description
+Get-ScriptAnalyzerRule | ft RuleName, CommonName, Description
 
 #Function Prefix Example
 $params = @{
@@ -27,8 +24,12 @@ $params = @{
 }
 Invoke-ScriptAnalyzer @params
 
+#want more? Look at the community rules.  Warning, they can annoy you. These are excellent references for creating your own rules.
+#https://github.com/PowerShell/PSScriptAnalyzer/tree/development/Tests/Engine/CommunityAnalyzerRules
+
 #Community Rules Example
 Get-ScriptAnalyzerRule -CustomRulePath '.\ScriptAnalyzerRules\Rules\CommunityAnalyzerRules'
+
 $params = @{
     Path            = '.\Demo\BreakingTheCommunityRules.ps1'
     CustomRulePath  = '.\ScriptAnalyzerRules\Rules\CommunityAnalyzerRules'

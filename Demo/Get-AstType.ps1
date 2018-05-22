@@ -25,7 +25,7 @@ function Get-AstType {
 				$ast = [System.Management.Automation.Language.Parser]::ParseFile( $ScriptPath, [ref]$null, [ref]$null )
 				$ast.FindAll( { $args[0] -ne $null }, $true )  |
 					ForEach-Object {
-						$_.GetType()
+						$PSItem.GetType()
 					} | Select-Object
 			}
 			catch {
@@ -36,4 +36,10 @@ function Get-AstType {
 			Write-Verbose "File not found."
 		}
 	}
+}
+
+$x | Out-Null
+
+function   Get-mmsWdiget {
+	
 }

@@ -6,6 +6,8 @@ $Name = 'tag'
 $tokens[1].Extent
 #is not
 [System.Management.Automation.PSParser]::Tokenize("dir|echo",[ref]$Null)
+
+#Token types
 [System.Management.Automation.Language.TokenKind]::pipe
 
 # No extent information, just information as to where it is located.  
