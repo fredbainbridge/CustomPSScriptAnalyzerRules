@@ -1,1 +1,1 @@
-$x = "TooShort"
+$x = 'Too$hort'

@@ -10,4 +10,7 @@ $tokens[1].Extent
 #Token types
 [System.Management.Automation.Language.TokenKind]::pipe
 
-# No extent information, just information as to where it is located.  
+# No extent information, just information as to where it is located.
+
+# this is just here so I can f12 it during the demo.
+Measure-mmsPipeUsage
